@@ -1,0 +1,49 @@
+<mvc:View
+    xmlns:networkgraph="sap.suite.ui.commons.networkgraph"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    controllerName="com.sap.demoapp.controller.Cart"
+    displayBlock="true"
+>
+    <Page
+        title="Food Delivery App"
+        showNavButton="true"
+        navButtonPress="onNavBack"
+    >
+        <content>
+            <List
+                items="{cartDetails>/value}"
+                headerText="Your Items"
+            >
+                <items>
+                    <ObjectListItem
+                        title="{cartDetails>quantity} X {cartDetails>item/item}"
+                        number="&#8377;{=  ${cartDetails>quantity} * ${cartDetails>item/price}}"
+                    >
+                        <attributes>
+                            <ObjectAttribute
+                                text="{cartDetails>quantity} X &#8377;{cartDetails>item/price}"
+                            />
+                        </attributes>
+                    </ObjectListItem>
+                </items>
+            </List>
+
+            <ObjectHeader
+                title="Total"
+                number="&#8377;{totalSum>/sum}"
+            />
+            <FlexBox
+                alignItems="Center"
+                justifyContent="Center"
+            >
+                <Button
+                    id="buttonMenu"
+                    text="Place Order"
+                    press="onPlaceOrder"
+                    type="Emphasized"
+                />
+            </FlexBox>
+        </content>
+    </Page>
+</mvc:View>

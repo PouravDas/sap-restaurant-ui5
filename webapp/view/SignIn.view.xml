@@ -1,0 +1,69 @@
+<mvc:View
+    xmlns:form="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    controllerName="com.sap.demoapp.controller.SignIn"
+    displayBlock="true"
+>
+    <Page
+        title="Food Delivery App"
+        showNavButton="true"
+        navButtonPress="onNavBack"
+    >
+        <content>
+            <FlexBox
+                justifyContent="Center"
+                alignItems="Center"
+                class="fullHeight"
+            >
+                <VBox class="loginContainer">
+                    <items>
+                        <Input
+                            id="userName"
+                            placeholder="User name"
+                            value="{signin>/name}"
+                            valueState="{validate>/name/state}"
+                            valueStateText="{validate>/name/text}"
+                            class="sapUiSmallMarginBottom"
+                        />
+                        <Input
+                            id="email"
+                            placeholder="Email address"
+                            type="Email"
+                            value="{signin>/email}"
+                            valueState="{validate>/email/state}"
+                            valueStateText="{validate>/email/text}"
+                            class="sapUiSmallMarginBottom"
+                        />
+                        <Input
+                            id="password"
+                            placeholder="New password"
+                            type="Password"
+                            value="{signin>/password}"
+                            valueState="{validate>/password/state}"
+                            valueStateText="{validate>/password/text}"
+                            class="sapUiSmallMarginBottom"
+                        />
+                        <Input
+                            id="passwordRepeat"
+                            placeholder="Repeat new password"
+                            type="Password"
+                            value="{signin>/passwordRepeat}"
+                            valueState="{validate>/passwordRepeat/state}"
+                            valueStateText="{validate>/passwordRepeat/text}"
+                            class="sapUiSmallMarginBottom"
+                        />
+                        <Button
+                            width="12rem"
+                            text="Sign Up"
+                            type="Emphasized"
+                            press="onSignUp"
+                            class="sapUiMediumMargin"
+                        />
+                    </items>
+                </VBox>
+            </FlexBox>
+        </content>
+    </Page>
+</mvc:View>

@@ -1,0 +1,58 @@
+<mvc:View
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    controllerName="com.sap.demoapp.controller.AddCart"
+>
+    <App>
+        <pages>
+            <Page
+                title="{restaurant>/restaurantName}"
+                showNavButton="true"
+                navButtonPress="onNavBack"
+            >
+                <headerContent />
+                <content>
+                    <VBox
+                        alignItems="Center"
+                        class="sapUiMediumMargin"
+                    >
+                        <Title
+                            text="{menu>/item}"
+                            level="H1"
+                        />
+                        <Label text="{= ${menu>veg} ? 'Veg' : 'Non-Veg' }" />
+                        <Label text="{menu>/description}" />
+                        <Label text="&#8377; {menu>/price}" />
+
+                        <StepInput
+                            id="CurrentValue"
+                            value="{quantity>/quantity}"
+                            width="6em"
+                            change="currentChangeHandler"
+                            class="sapUiSmallMargin"
+                            min="1"
+                        />
+                        <HBox
+                            alignItems="Center"
+                            class="sapUiMediumMargin"
+                        >
+                            <Button
+                                text="Remove"
+                                press="onRemoveCart"
+                                type="Reject"
+                                visible="{displayInfo>/editMode}"
+                                class="sapUiSmallMargin"
+                            />
+                            <Button
+                                text="{displayInfo>/saveButton}"
+                                press="onSave"
+                                type="Emphasized"
+                                class="sapUiSmallMargin"
+                            />
+                        </HBox>
+                    </VBox>
+                </content>
+            </Page>
+        </pages>
+    </App>
+</mvc:View>

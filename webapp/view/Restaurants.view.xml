@@ -1,0 +1,102 @@
+<mvc:View
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    controllerName="com.sap.demoapp.controller.Restaurant"
+>
+    <App>
+        <pages>
+            <Page title="Food Delivery App">
+                <headerContent>
+                    <Button
+                        id="buttonAdd"
+                        icon="sap-icon://add"
+                        tooltip="Add a new restaurant"
+                        press="onAddPress"
+                        enabled="true"
+                        visible="{display>/editMode}"
+                    />
+                    <Button
+                        id="buttonDelete"
+                        icon="sap-icon://delete"
+                        tooltip="Delete the selected restaurant"
+                        press="onDeletePress"
+                        enabled="false"
+                        visible="{display>/editMode}"
+                    />
+                    <Button
+                        id="buttonEdit"
+                        icon="sap-icon://edit"
+                        tooltip="Edit the selected restaurant"
+                        press="onEditPress"
+                        enabled="false"
+                        visible="{display>/editMode}"
+                    />
+                    <Button
+                        id="buttonCart"
+                        icon="sap-icon://cart"
+                        tooltip="cart"
+                        press="onCartPress"
+                        visible="{=  !${display>/editMode}}"
+                    />
+                    <Button
+                        id="buttonAccount"
+                        icon="sap-icon://account"
+                        tooltip="Profile"
+                        press="onProfilePress"
+                    />
+                </headerContent>
+                <List
+                    id="restaurantList"
+                    headerText="Restaurants"
+                    class="sapUiResponsiveMargin"
+                    width="auto"
+                    items="{restaurants>/value}"
+                    mode="{= ${display>/editMode} ? 'SingleSelect' : 'None'}"
+                    selectionChange="onSelect"
+                    includeItemInSelection="true"
+                >
+                    <headerToolbar>
+                        <Toolbar>
+                            <Title text="Restaurants" />
+                            <ToolbarSpacer />
+                            <!--<SearchField
+                    width="50%"
+                    search=".onFilterInvoices"
+                /> -->
+                        </Toolbar>
+                    </headerToolbar>
+                    <items>
+                        <ObjectListItem
+                            title="{restaurants>name}"
+                            type="{= ${display>/editMode} ? 'Inactive' : 'Navigation'}"
+                            press=".onPress"
+                        >
+                            <attributes>
+                                <ObjectAttribute
+                                    title="{restaurants>description}"
+                                    text="@ &#8377;{restaurants>averageCost} per person"
+                                />
+                            </attributes>
+                        </ObjectListItem>
+                    </items>
+                </List>
+                <FlexBox
+                    height="100px"
+                    alignItems="End"
+                    justifyContent="End"
+                >
+                    <Button
+                        id="buttonMenu"
+                        text="Go to Menu Items"
+                        tooltip="Go Menu Items the selected restaurant"
+                        press="onGoToMenuPress"
+                        enabled="false"
+                        type="Emphasized"
+                        class="sapUiMediumMarginEnd"
+                        visible="{display>/editMode}"
+                    />
+                </FlexBox>
+            </Page>
+        </pages>
+    </App>
+</mvc:View>

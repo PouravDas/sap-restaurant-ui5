@@ -1,0 +1,112 @@
+<mvc:View
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    controllerName="com.sap.demoapp.controller.Menu"
+>
+    <App>
+        <pages>
+            <Page
+                title="{restaurant>/restaurantName}"
+                showNavButton="true"
+                navButtonPress="onNavBack"
+            >
+                <headerContent>
+                    <Button
+                        id="buttonAdd"
+                        icon="sap-icon://add"
+                        tooltip="Add a new restaurant"
+                        press="onAddPress"
+                        enabled="true"
+                        visible="{display>/editMode}"
+                    />
+                    <Button
+                        id="buttonDelete"
+                        icon="sap-icon://delete"
+                        tooltip="Delete the selected restaurant"
+                        press="onDeletePress"
+                        enabled="false"
+                        visible="{display>/editMode}"
+                    />
+                    <Button
+                        id="buttonEdit"
+                        icon="sap-icon://edit"
+                        tooltip="Edit the selected restaurant"
+                        press="onEditPress"
+                        enabled="false"
+                        visible="{display>/editMode}"
+                    />
+                    <Button
+                        id="buttonCart"
+                        icon="sap-icon://cart"
+                        tooltip="cart"
+                        press="onCartPress"
+                        visible="{=  !${display>/editMode}}"
+                    />
+                    <Button
+                        id="buttonAccount"
+                        icon="sap-icon://account"
+                        tooltip="account"
+                        press="onProfilePress"
+                    />
+                </headerContent>
+                <List
+                    id="menuList"
+                    headerText="Restaurants"
+                    class="sapUiResponsiveMargin"
+                    width="auto"
+                    items="{
+                      path : 'menu>/value',
+                      sorter : {
+                        path : 'category',
+                        group: true
+                      }
+                    }"
+                    mode="{= ${display>/editMode} ? 'SingleSelect' : 'None'}"
+                    selectionChange="onSelect"
+                    includeItemInSelection="true"
+                >
+                    <headerToolbar>
+                        <Toolbar>
+                            <Title text="Items" />
+                            <ToolbarSpacer />
+                            <Label text="Veg Only" />
+                            <Switch
+                                id="vegOnly"
+                                type="AcceptReject"
+                                state="false"
+                                change="onVegOnly"
+                            />
+                            <ToolbarSpacer />
+                            <SearchField
+                                width="50%"
+                                search=".onFilterMenu"
+                            />
+                        </Toolbar>
+                    </headerToolbar>
+                    <GroupHeaderListItem title="{menu>category}" />
+                    <items>
+                        <ObjectListItem
+                            title="{menu>item}"
+                            number="&#8377; {menu>price}"
+                            type="{= ${display>/editMode} ? 'Inactive' : 'Navigation'}"
+                            press=".onPress"
+                        >
+                            <attributes>
+                                <ObjectAttribute text="{menu>description}" />
+                            </attributes>
+
+                            <firstStatus>
+                                <ObjectStatus
+                                    id="ID-Veg"
+                                    text="{= ${menu>veg} ? 'Veg' : 'Non-Veg' }"
+                                    class="{= ${menu>veg} ? 'myGreenColor' : 'myRedColor' }"
+                                    state="{ path: 'menu>veg', formatter: '.statusTextFormatter' }"
+                                />
+                            </firstStatus>
+                        </ObjectListItem>
+                    </items>
+                </List>
+            </Page>
+        </pages>
+    </App>
+</mvc:View>

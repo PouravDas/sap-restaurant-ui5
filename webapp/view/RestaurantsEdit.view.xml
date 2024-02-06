@@ -1,0 +1,66 @@
+<mvc:View
+    xmlns:form="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    controllerName="com.sap.demoapp.controller.RestaurantEdit"
+    displayBlock="true"
+>
+    <Page
+        title="Restaurants List"
+        showNavButton="true"
+        navButtonPress="onNavBack"
+    >
+        <content>
+            <form:SimpleForm
+                id="restaurantForm"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                labelSpanL="3"
+                labelSpanM="3"
+                emptySpanL="4"
+                emptySpanM="4"
+                columnsL="1"
+                columnsM="1"
+                title="Restaurant Information"
+            >
+                <Label text="Name" />
+                <Input
+                    value="{restaurant>/name}"
+                    required="true"
+                    valueState="{validate>/name/state}"
+                    valueStateText="{validate>/name/text}"
+                />
+
+                <Label text="Description" />
+                <Input
+                    value="{restaurant>/description}"
+                    required="true"
+                    valueState="{validate>/description/state}"
+                    valueStateText="{validate>/description/text}"
+                />
+
+                <Label text="Average Cost" />
+                <Input
+                    type="Number"
+                    value="{restaurant>/averageCost}"
+                    required="true"
+                    valueState="{validate>/averageCost/state}"
+                    valueStateText="{validate>/averageCost/text}"
+                />
+
+                <Label text="Address" />
+                <Input
+                    value="{restaurant>/address}"
+                    required="false"
+                    valueState="{validate>/address/state}"
+                    valueStateText="{validate>/address/text}"
+                />
+                <Button
+                    text="{displayInfo>/saveButton}"
+                    press="onSavePress"
+                />
+            </form:SimpleForm>
+        </content>
+    </Page>
+</mvc:View>

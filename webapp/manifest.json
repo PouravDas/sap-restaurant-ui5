@@ -1,81 +1,179 @@
 {
-	"_version": "1.12.0",
-
-	"sap.app": {
-		"id": "com.sap.demoapp",
-		"type": "application",
-		"i18n": "i18n/i18n.properties",
-		"title": "{{appTitle}}",
-		"description": "{{appDescription}}",
-		"applicationVersion": {
-			"version": "1.0.0"
-		}
-	},
-
-	"sap.ui": {
-		"technology": "UI5",
-		"icons": {},
-		"deviceTypes": {
-			"desktop": true,
-			"tablet": true,
-			"phone": true
-		}
-	},
-
-	"sap.ui5": {
-		"rootView": {
-			"viewName": "com.sap.demoapp.view.App",
-			"type": "XML",
-			"async": true,
-			"id": "app"
-		},
-
-		"dependencies": {
-			"minUI5Version": "1.120.3",
-			"libs": {
-				"sap.ui.core": {},
-				"sap.m": {}
-			}
-		},
-
-		"handleValidation": true,
-
-		"contentDensities": {
-			"compact": true,
-			"cozy": true
-		},
-
-		"models": {
-			"i18n": {
-				"type": "sap.ui.model.resource.ResourceModel",
-				"settings": {
-					"bundleName": "com.sap.demoapp.i18n.i18n"
-				}
-			}
-		},
-
-		"routing": {
-			"config": {
-				"routerClass": "sap.m.routing.Router",
-				"viewType": "XML",
-				"viewPath": "com.sap.demoapp.view",
-				"controlId": "app",
-				"controlAggregation": "pages",
-				"async": true
-			},
-			"routes": [
-				{
-					"pattern": "",
-					"name": "main",
-					"target": "main"
-				}
-			],
-			"targets": {
-				"main": {
-					"viewId": "main",
-					"viewName": "Main"
-				}
-			}
-		}
-	}
+  "_version": "1.12.0",
+  "sap.app": {
+    "id": "com.sap.demoapp",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "applicationVersion": {
+      "version": "1.0.0"
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {},
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "rootView": {
+      "viewName": "com.sap.demoapp.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "app"
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/custom.css"
+        }
+      ]
+    },
+    "dependencies": {
+      "minUI5Version": "1.120.3",
+      "libs": {
+        "sap.ui.core": {},
+        "sap.m": {}
+      }
+    },
+    "handleValidation": true,
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.sap.demoapp.i18n.i18n"
+        }
+      }
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "viewPath": "com.sap.demoapp.view",
+        "controlId": "app",
+        "controlAggregation": "pages",
+        "async": true
+      },
+      "routes": [
+        {
+          "pattern": "",
+          "name": "main",
+          "target": "main"
+        },
+        {
+          "pattern": "login",
+          "name": "login",
+          "target": "login"
+        },
+        {
+          "pattern": "restaurant",
+          "name": "restaurant",
+          "target": "restaurant"
+        },
+        {
+          "pattern": "restaurantAdd",
+          "name": "restaurantAdd",
+          "target": "restaurantAdd"
+        },
+        {
+          "pattern": "restaurantEdit/{restaurantId}",
+          "name": "restaurantEdit",
+          "target": "restaurantEdit"
+        },
+        {
+          "pattern": "menu/{restaurantId}",
+          "name": "menu",
+          "target": "menu"
+        },
+        {
+          "pattern": "menuAdd/{restaurantId}",
+          "name": "menuAdd",
+          "target": "menuAdd"
+        },
+        {
+          "pattern": "menuEdit/{menuId}",
+          "name": "menuEdit",
+          "target": "menuEdit"
+        },
+        {
+          "pattern": "addCart/{menuId}",
+          "name": "addCart",
+          "target": "addCart"
+        },
+        {
+          "pattern": "cart",
+          "name": "cart",
+          "target": "cart"
+        },
+        {
+          "pattern": "signin",
+          "name": "signin",
+          "target": "signin"
+        },
+        {
+          "pattern": "profile",
+          "name": "profile",
+          "target": "profile"
+        }
+      ],
+      "targets": {
+        "main": {
+          "viewId": "main",
+          "viewName": "Main"
+        },
+        "login": {
+          "viewId": "login",
+          "viewName": "Login"
+        },
+        "restaurant": {
+          "viewId": "restaurant",
+          "viewName": "Restaurants"
+        },
+        "restaurantAdd": {
+          "viewId": "restaurantAdd",
+          "viewName": "RestaurantsEdit"
+        },
+        "restaurantEdit": {
+          "viewId": "restaurantEdit",
+          "viewName": "RestaurantsEdit"
+        },
+        "menu": {
+          "viewId": "menu",
+          "viewName": "Menu"
+        },
+        "menuAdd": {
+          "viewId": "menuAdd",
+          "viewName": "MenuEdit"
+        },
+        "menuEdit": {
+          "viewId": "menuEdit",
+          "viewName": "MenuEdit"
+        },
+        "addCart": {
+          "viewId": "addCart",
+          "viewName": "AddCart"
+        },
+        "cart": {
+          "viewId": "cart",
+          "viewName": "Cart"
+        },
+        "signin": {
+          "viewId": "signin",
+          "viewName": "Signin"
+        },
+        "profile": {
+          "viewId": "profile",
+          "viewName": "Profile"
+        }
+      }
+    }
+  }
 }

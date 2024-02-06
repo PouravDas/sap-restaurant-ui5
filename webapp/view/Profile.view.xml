@@ -1,0 +1,70 @@
+<mvc:View
+    xmlns:form="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    controllerName="com.sap.demoapp.controller.Profile"
+>
+    <App>
+        <pages>
+            <Page
+                title="Food Delivery App"
+                showNavButton="true"
+                navButtonPress="onNavBack"
+            >
+                <content>
+                    <form:SimpleForm
+                        id="menuForm"
+                        editable="false"
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        columnsL="1"
+                        columnsM="1"
+                        title="User Profile"
+                    >
+                        <Label text="UUID" />
+                        <Input
+                            value="{profile>/ID}"
+                            editable="false"
+                        />
+
+                        <Label text="User Name" />
+                        <Input
+                            value="{profile>/name}"
+                            editable="false"
+                        />
+
+                        <Label text="Email ID" />
+                        <Input
+                            value="{profile>/email}"
+                            editable="false"
+                        />
+
+                        <Label text="User Role" />
+                        <Input
+                            value="{profile>/role}"
+                            editable="false"
+                        />
+                    </form:SimpleForm>
+
+                    <FlexBox
+                        height="100px"
+                        alignItems="Center"
+                        justifyContent="Center"
+                    >
+                        <Button
+                            id="buttonLogout"
+                            text="Logout"
+                            press="onLogoutProfile"
+                            type="Emphasized"
+                            class="sapUiMediumMarginCenter"
+                        />
+                    </FlexBox>
+                </content>
+            </Page>
+        </pages>
+    </App>
+</mvc:View>
