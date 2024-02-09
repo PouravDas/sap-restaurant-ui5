@@ -3,6 +3,7 @@ import BaseController from "./BaseController";
 import Utils from "../model/Utils";
 import MessageBox from "sap/m/MessageBox";
 import MessageToast from "sap/m/MessageToast";
+import { List$ItemClickEvent } from "sap/ui/webc/main/List";
 
 var restaurant_ID: string = null;
 var userUUID: string = null;
@@ -82,6 +83,15 @@ export default class Cart extends BaseController {
   public onNavBack() {
     const oRouter = this.getOwnerComponent().getRouter();
     oRouter.navTo("restaurant", {}, true);
+  }
+
+  public onPress(oEvent: List$ItemClickEvent): void {
+    const source = oEvent.getSource() as any;
+    const path = source.getBindingContextPath();
+    const item = source.getModel("cartDetails").getProperty(path);
+
+    const oRouter = this.getOwnerComponent().getRouter();
+    oRouter.navTo("addCart", { menuId: "fromcart=true&itemID=" + item.item_ID }, true);
   }
 }
 

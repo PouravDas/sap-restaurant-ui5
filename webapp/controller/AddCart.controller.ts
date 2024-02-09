@@ -27,7 +27,10 @@ export default class AddCart extends BaseController {
 
   private getMenuID(): string {
     const url = window.location.href.split('/');
-    return url[url.length - 1];
+    const path = url[url.length - 1];
+    if (path.includes("itemID=")) {
+      return path.substring(path.indexOf("itemID=") + 7);
+    } else return path;
   }
 
   private async loadMenu(menuId: string) {
@@ -157,7 +160,12 @@ export default class AddCart extends BaseController {
 
   public onNavBack() {
     const oRouter = this.getOwnerComponent().getRouter();
-    oRouter.navTo("menu", { restaurantId: restaurant_ID }, true);
+    const url = window.location.href.split('/');
+    const path = url[url.length - 1];
+    if (path.includes("fromcart")) {
+      oRouter.navTo("cart", {}, true);
+    } else
+      oRouter.navTo("menu", { restaurantId: restaurant_ID }, true);
   }
 }
 

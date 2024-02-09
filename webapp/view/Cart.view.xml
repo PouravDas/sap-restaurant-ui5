@@ -19,6 +19,8 @@
                     <ObjectListItem
                         title="{cartDetails>quantity} X {cartDetails>item/item}"
                         number="&#8377;{=  ${cartDetails>quantity} * ${cartDetails>item/price}}"
+                        type="Navigation"
+                        press=".onPress"
                     >
                         <attributes>
                             <ObjectAttribute
